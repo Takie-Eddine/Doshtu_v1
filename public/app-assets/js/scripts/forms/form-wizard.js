@@ -214,7 +214,7 @@ $(function () {
     $(modernVerticalWizard)
       .find('.btn-submit')
       .on('click', function () {
-        alert('Submitted..!!');
+       // alert('Submitted..!!');
       });
   }
 });

@@ -21,25 +21,13 @@ Route::group([
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
 
-    Route::group(['namespace' => 'Supplier', 'middleware' => 'guest:supplier', 'prefix' => 'supplier'], function () {
-        Route::get('login', [LoginController::class, 'login'])->name('supplier.login');
-        Route::post('login', [LoginController::class, 'postLogin'])->name('supplier.post.login');
+    Route::group(['namespace' => 'Company', 'middleware' => ['auth:supplier','cors'], 'prefix' => 'company'], function () {
+        Route::get('', [\App\Http\Controllers\Company\CompanyController::class, 'company'])->name('company.company');
+        Route::get('countries', [\App\Http\Controllers\Company\CountryController::class, 'getStates'])->name('country.states');
+
+        //Route::get('login', [LoginController::class, 'login'])->name('supplier.login');
+        Route::post('', [\App\Http\Controllers\Company\CompanyController::class, 'create'])->name('company.post.add');
     });
-
-
-    Route::group(['namespace' => 'Supplier', 'middleware' => 'auth:supplier', 'prefix' => 'supplier'], function () {
-
-        Route::get('supplier', [SupplierController::class, 'supplier'])->name('supplier.supplier');
-
-
-    });
-
-
-
-
-
-    Route::get('logout', [LoginController::class, 'logout'])->name('supplier.logout');
-
 
 
 });

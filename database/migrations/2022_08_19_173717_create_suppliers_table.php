@@ -21,10 +21,10 @@ class CreateSuppliersTable extends Migration
             $table->string('mobile')->unique();
             $table->string('password')->unique();
             $table->string('logo')->nullable();
-            $table->integer('company_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('company_id')->references('id')->on('supplier_companies')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

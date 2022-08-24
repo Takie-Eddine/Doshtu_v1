@@ -21,19 +21,21 @@
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/bootstrap-extended.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/colors.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/components.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/themes/dark-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/themes/bordered-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/themes/semi-dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap-extended.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/colors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/components.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/bordered-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/semi-dark-layout.css')}}">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/core/menu/menu-types/vertical-menu.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/pages/dashboard-ecommerce.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/plugins/charts/chart-apex.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/plugins/extensions/ext-component-toastr.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/dashboard-ecommerce.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/charts/chart-apex.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-validation.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-wizard.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -75,6 +77,10 @@
     <!-- BEGIN: Page Vendor JS-->
     <script src="{{asset('app-assets/vendors/js/charts/apexcharts.min.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
+    <script src="{{asset('app-assets/vendors/js/ui/jquery.sticky.js')}}"></script>
+    <script src="{{asset('app-assets/vendors/js/forms/wizard/bs-stepper.min.js')}}"></script>
+    <script src="{{asset('app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
+    <script src="{{asset('app-assets/vendors/js/forms/validation/jquery.validate.min.js')}}"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -84,6 +90,8 @@
 
     <!-- BEGIN: Page JS-->
     <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
+    <script src="{{asset('app-assets/js/scripts/forms/form-wizard.js')}}"></script>
+
     <!-- END: Page JS-->
 
     <script>
