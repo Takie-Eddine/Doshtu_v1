@@ -24,8 +24,13 @@ class SupplierRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=>'required|email',
-            'password' => 'required|min:8',
+            'first_name' => 'required|min:2',
+            'last_name' => 'required|min:2',
+            'role_id' => 'required|numeric|exists:roles,id',
+            'email' => 'required|email|unique:suppliers,email,'.$this -> id,
+            'password'  => 'required_without:id|confirmed',
+            // 'photo'=>'required_without:id',
+            // 'photo.*' => 'mimes:jpg,jpeg,png',
         ];
     }
 }

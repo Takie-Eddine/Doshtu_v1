@@ -68,6 +68,8 @@ class Kernel extends HttpKernel
         'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
         'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
-        'cors'          => \App\Http\Middleware\Cors::class, // added
+        'role' => \Mindscms\Entrust\Middleware\EntrustRole::class,
+        'permission' => \Mindscms\Entrust\Middleware\EntrustPermission::class,
+        'ability' => \Mindscms\Entrust\Middleware\EntrustAbility::class,
     ];
 }
