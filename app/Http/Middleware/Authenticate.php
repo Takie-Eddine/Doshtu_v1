@@ -19,15 +19,16 @@ class Authenticate extends Middleware
         //     return route('login');
         // }
 
+
         if (! $request->expectsJson()) {
 
             if(Request::is(app()->getLocale().'/supplier*')){
                 return route('supplier.login');
             }
 
-            // if(Request::is(app()->getLocale().'/client *')){
-            //     return route('client.login');
-            // }
+            if(Request::is(app()->getLocale().'/client *')){
+                return route('client.login');
+            }
 
             else{
                 return route('signup.signup');
@@ -35,5 +36,6 @@ class Authenticate extends Middleware
 
 
         }
+
     }
 }

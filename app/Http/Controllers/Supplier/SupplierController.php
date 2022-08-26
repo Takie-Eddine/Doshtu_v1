@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
-
-
-    public function supplier(){
-        return view('supplier.supplier.dashboard');
+    public function index(){
+        return view('supplier.supplier');
     }
 }

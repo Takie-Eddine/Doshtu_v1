@@ -9,10 +9,14 @@
         "astrotomic/laravel-translatable": "^11.10",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.7",
+        "intervention/imagecache": "^2.5",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "mcamara/laravel-localization": "^1.7",
+        "mindscms/entrust": "^2.5",
+        "spatie/laravel-enum": "^3.0",
         "yajra/laravel-datatables-oracle": "^9.0"
     },
     "require-dev": {
@@ -28,15 +32,15 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
         },
         "files":[
             "app/Helpers/general.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     },
     "scripts": {
         "post-autoload-dump": [

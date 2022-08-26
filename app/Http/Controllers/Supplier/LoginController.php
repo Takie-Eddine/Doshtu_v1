@@ -3,19 +3,20 @@
 namespace App\Http\Controllers\Supplier;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Supplier\SupplierLoginRequest;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
     public function login(){
-
         return view('supplier.auth.login');
-
     }
 
 
-    public function postLogin(Request $request){
 
+    public function postLogin(SupplierLoginRequest $request){
+
+        //return $request;
 
         $remember_me = $request->has('remember_me') ? true : false;
         if (auth()->guard('supplier')->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], $remember_me)) {
@@ -41,4 +42,6 @@ class LoginController extends Controller
 
         return auth('supplier');
     }
+
+
 }
