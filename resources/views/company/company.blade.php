@@ -320,6 +320,9 @@
                                     @enderror
                                 </div>
                             </div>
+
+
+
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-primary btn-prev" type="button" id="btnprev3">
                                     <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
@@ -337,7 +340,87 @@
 
 
 
+            </div>
+
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Attributes</h4>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Options</th>
+                                <th>action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="datatable">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
+        <section id="multiple-column-form">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title"></h4>
+                        </div>
+                        <div class="card-body">
+                            <form class="form">
+                                <div class="row">
+                                    <div class="col-md-6 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="attribute-column">Attributes</label>
+                                            <select name="attribute[]" id="atr">
+                                                @foreach ($attributes as $attribute)
+                                                    <option  value="{{$attribute->name}}">
+                                                            {{ $attribute->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="attribute-column">Options</label>
+                                            <select name="options[]">
+                                                @if ($options && $options->count() > 0)
+                                                    @foreach ($options as $option)
+                                                        @if ($attribute->id == $option->attribute_id)
+                                                            <option value="{{ $option->id }}">{{ $option->name }} </option>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="option-column">Options</label>
+                                            <input type="text" id="option-column" class="form-control" placeholder="Last Name" name="option" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="button" id="bta" class="btn btn-primary me-1">Submit</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 </div>
 @endsection
@@ -355,10 +438,13 @@
 <script src="{{asset('app-assets/vendors/js/forms/wizard/bs-stepper.min.js')}}"></script>
 <script src="{{asset('app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
 <script src="{{asset('app-assets/vendors/js/forms/validation/jquery.validate.min.js')}}"></script>
+<script src="{{asset('app-assets/vendors/js/forms/repeater/jquery.repeater.min.js')}}"></script>
+
 <!-- END: Page Vendor JS-->
 
 
 <!-- BEGIN: Page JS-->
+<script src="{{asset('app-assets/js/scripts/forms/form-repeater.js')}}"></script>
 <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
 <script src="{{asset('app-assets/js/scripts/forms/form-wizard.js')}}"></script>
 
@@ -368,8 +454,9 @@
 
 <script>
 
-    $(document).ready(function () {
 
+    $(document).ready(function () {
+        var options = [];
         {{--$("#submitb").click(function (e) {--}}
 
         {{--    var url = "{{ route('company.post.add')  }}";--}}
@@ -455,6 +542,63 @@
         //         $("#nextone").attr("disabled", false);
         //     }
         // } )
+
+        $("#bta").click(function(){
+            const  attribute= $('input[name="attribute"]').val();
+            const  option = $('input[name="option"]').val();
+            const row = {
+
+                'attribute' : attribute,
+                'option' : option,
+                'ind' : options.length
+
+            }
+            options[options.length] = row;
+            setdata()
+
+        });
+        $(document).on('click',"#btr",function (e){
+
+            const i  = e.currentTarget.value
+            for (let j = 0; j < options.length; j++) {
+                if (options[j].ind == i){
+                    options.splice(j,1);
+                    break;
+                }
+            }
+            setdata();
+        });
+
+        $('#atr').change(function (){
+            const atrselected =   $('#atr option:selected').val();
+            alert(atrselected)
+            @foreach($options as $opt)
+                if ( {{$opt->id}} == atrselected ){
+                $('#atr').append($('<option value="{{opt->id}}"> {{ opt->name }} </option>'))
+            }
+            @@endforeach
+        })
+
+
+
+        function setdata(){
+            $('#datatable').find('tr').remove();
+
+            for (let i = 0; i < options.length; i++) {
+                $('#datatable').append(
+                    $(  '<tr> ' +
+                            '<td> '+options[i].attribute+'  </td> ' +
+                            '<td>'+options[i].option+' </td> ' +
+                            '<td> <button id="btr"  class="btn btn-outline-danger text-nowrap px-1" type="button"  value="'+ options[i].ind +'">' +
+                                        '<span>Delete</span>' +
+                                '</button> ' +
+                            '</td>' +
+                        '</tr>'));
+            }
+
+        };
+
+
 
         $("#nextone").click(function(){
             const  company_name = $('input[name="company_name"]').val();
