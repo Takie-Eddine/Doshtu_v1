@@ -67,8 +67,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-
-         return $request;
+        return json_encode($request->prod[1]['value']);
 
         try {
 
