@@ -216,14 +216,91 @@
                                         <h5 class="mb-0">Product Details</h5>
                                         <small>Enter Your Product Details..</small>
                                     </div>
+                                    <div class="mb-1 col-md-12">
+                                        <label class="form-label" for="photo">Images</label>
+                                        <input type="file" id="photo" name="photo[]" value=""class="form-control" placeholder="upload file" multiple="multiple" />
+                                        @error('photo')
+                                        <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
+                                    </div>
 
+                                    <div class="row">
+                                        <div class="row" id="basic-table">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title">Attributes</h4>
+                                                    </div>
+
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Attribute</th>
+                                                                <th>Options</th>
+                                                                <th>action</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="datatable">
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <section id="multiple-column-form">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h4 class="card-title"></h4>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <form class="form">
+                                                                <div class="row">
+                                                                    <div class="col-md-6 col-12">
+                                                                        <div class="mb-1">
+                                                                            <label class="form-label" for="attribute-column">Attributes</label>
+                                                                            <select name="attribute" class="form-control" id="atr">
+                                                                                @foreach ($attributes as $attribute)
+                                                                                    <option  value="{{$attribute->id}}">
+                                                                                        {{ $attribute->name }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-12">
+                                                                        <div class="mb-1">
+                                                                            <label class="form-label" for="attribute-column">Options</label>
+                                                                            <select multiple="multiple"  name="options"  class="form-control select2 form-select" id="opt">
+
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="col-12">
+                                                                        <button type="button" id="bta" class="btn btn-primary me-1">Add</button>
+
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
 
                                     <div class="d-flex justify-content-between">
                                         <button type="button" class="btn btn-primary btn-prev">
                                             <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
                                             <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                         </button>
-                                        <button type="button" class="btn btn-primary btn-next">
+                                        <button type="button" class="btn btn-primary btn-next" id="as">
                                             <span class="align-middle d-sm-inline-block d-none">Next</span>
                                             <i data-feather="arrow-right" class="align-middle ms-sm-25 ms-0"></i>
                                         </button>
@@ -231,39 +308,22 @@
                                 </div>
                                 <div id="social-links-modern" class="content" role="tabpanel" aria-labelledby="social-links-modern-trigger">
 
+                                    <div class="row" >
+                                        <div class="col-12" id="combo">
 
-                                        <div class="mb-1 col-md-12">
-                                            <label class="form-label" for="photo">Images</label>
-                                            <input type="file" id="photo" name="photo[]" value=""class="form-control" placeholder="upload file" multiple="multiple" />
-                                            @error('photo')
-                                                <span class="text-danger"> {{ $message }}</span>
-                                            @enderror
+
+                                            <div class="col-md-3 col-12 ">
+                                                <input type="text" class="form-control" name="stu" placeholder="stu">
+                                            </div>
+                                            <div class="col-md-3 col-12 ">
+                                                <input type="number" class="form-control" name="price" placeholder="price">
+                                            </div>
+                                            <div class="col-md-3 col-12 ">
+                                                <input type="number" class="form-control" name="quantity" placeholder="quantity">
+                                            </div>
                                         </div>
 
-                                        <div class="row">
-                                            @foreach ($attributes as $attribute)
-                                                <div class="mb-1 col-md-3">
-                                                    <label class="form-label" for="attribute">Attribute</label>
-                                                    <input type="text" id="attribute" name="attribute[]" value="{{$attribute->name}}"class="form-control" placeholder="attribute"  />
-                                                    <label class="form-label" for="options"></label>
-                                                    <select name="options[]" class="select2 form-select" multiple="multiple" id="default-select-multi.{{$attribute->id}}.23">
-                                                        @if ($options && $options->count() > 0)
-                                                            @foreach ($options as $option)
-                                                                @if ($attribute->id == $option->attribute_id)
-                                                                    <option value="{{ $option->id }}">{{ $option->name }} </option>
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
-                                                    </select>
-                                                    @error('options.0')
-                                                        <span class="text-danger"> {{ $message }}</span>
-                                                    @enderror
-                                                    @error('attribute.0')
-                                                    <span class="text-danger"> {{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            @endforeach
-                                        </div>
+                                    </div>
 
 
 
@@ -273,6 +333,7 @@
                                             <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
                                             <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                         </button>
+
                                         <button type="submit" class="btn btn-success btn-submit">Submit</button>
                                     </div>
                                 </div>
@@ -314,18 +375,148 @@
 
     <script>
         $(document).ready(function() {
-            $("#image").fileinput({
 
-                theme:'fas',
-                maxFilesize: 5,
-                maxFileCount: 10,
-                allowedFileTypes:['image'],
-                showCancel :true ,
-                showRemove: false,
-                showUpload: false,
-                overwriteInitial:false,
+            var optionList = []
+            var validatedoptions = [];
+            // $("#image").fileinput({
+            //
+            //     theme:'fas',
+            //     maxFilesize: 5,
+            //     maxFileCount: 10,
+            //     allowedFileTypes:['image'],
+            //     showCancel :true ,
+            //     showRemove: false,
+            //     showUpload: false,
+            //     overwriteInitial:false,
+            //
+            // });
+
+            $('#atr').change(function (){
+
+                const atrselected =   $(this).val();
+                $("#opt").find('option').remove();
+                const data  = {!! $options !!};
+
+                for (let i = 0; i < data.length; i++) {
+                    if(data[i].attribute_id == atrselected){
+                        $('#opt').append($('<option value="'+data[i].id+'">'+ data[i].name+' </option>'))
+                    }
+                }
+
+            })
+
+            $(document).on('click',"#bta",function (e){
+                let option = []
+                let optionstext = []
+                const  attribute= $('select[name="attribute"] option:selected').val();
+                const  attributet= $('select[name="attribute"] option:selected').text();
+               $('#opt option:selected').each(function () {
+                   if (!validatedoptions.includes(this)){
+                       validatedoptions[validatedoptions.length] = this.value;
+                   }
+                   option[option.length] = this.value;
+                   optionstext[optionstext.length]=this.text;
+                });
+                const optiont = $('#opt option:selected').text();
+
+                const row = {
+                    'attribute' : attribute,
+                    'option' : option,
+                    'ind' : optionList.length,
+                    'attributetext' : attributet,
+                    'optiontext' : optiont,
+                    'optiontextar' : optionstext
+                }
+                //optionList[optionList.length] = row;
+
+                addtotable(row);
+                setdata()
+                $('#opt option:selected').val(validatedoptions)
 
             });
+            $(document).on('click',"#btr",function (e){
+
+                const i  = e.currentTarget.value
+                for (let j = 0; j < optionList.length; j++) {
+                    if (optionList[j].ind == i){
+                        optionList.splice(j,1);
+                        break;
+                    }
+                }
+                setdata();
+            });
+
+
+
+            function addtotable(row){
+                let added = false
+                for (let i = 0; i < optionList.length; i++) {
+                    if (optionList[i].attribute === row.attribute){
+                        optionList[i] = row;
+                        added =true;
+                    }
+                }
+                if(!added){
+                    optionList[optionList.length] = row;
+                }
+            }
+
+            function setdata(){
+                $('#datatable').find('tr').remove();
+
+                for (let i = 0; i < optionList.length; i++) {
+                    $('#datatable').append(
+                        $(  '<tr> ' +
+                            '<td> '+optionList[i].attributetext+'  </td> ' +
+                            '<td>'+optionList[i].optiontext+' </td> ' +
+                            '<td> <button id="btr"  class="btn btn-outline-danger text-nowrap px-1" type="button"  value="'+ optionList[i].ind +'">' +
+                            '<span>Delete</span>' +
+                            '</button> ' +
+                            '</td>' +
+                            '</tr>'));
+                }
+
+            };
+
+
+            $('#as').click(function () {
+                for (let i = 0; i < optionList.length ; i++) {
+                    let str = '';
+                    for (let j = 0; j < optionList[i].option.length; j++) {
+                        str += '<option value="'+ optionList[i].option[j] +'">'+ optionList[i].optiontextar[j] +'</option>'
+                    }
+                    $("#combo").append(  $('<div class=" col-md-3 mb-1"><select class="form-control form-select col-2"  name="'+ optionList[i].attribute +'" id="'+ optionList[i].attribute +'" >' +
+                        str +
+                        '</select></div>') )
+
+                }
+                // const col_number = optionList.length;
+                // let  combination_number = 1;
+                // let option_frequence = [];
+                // let option_number = [];
+                // for (let i = 0; i < optionList.length; i++) {
+                //     combination_number = combination_number * optionList[i].option.length;
+                //     option_number[i] = optionList[i].option.length;
+                // }
+                //
+                // option_frequence[0] = combination_number ;
+                // for (let i = 1; i < optionList.length; i++) {
+                //     option_frequence[i]  = option_frequence[i-1] / optionList[i].option.length ;
+                // }
+                //
+                // for (let i = 0; i < optionList.length; i++) {
+                //     for (let j = 0; j < optionList[i].option.length; j++) {
+                //         for (let k = 0; k < option_frequence[i]; k++) {
+                //               //  console.log(optionList[i].option[j]+'/'+ optionList[i+1].option[j]+'/'+optionList[i+2].option[j]);
+                //         }
+                //
+                //
+                //     }
+                // }
+                //
+                //
+
+            })
 
             // $("#sku").onchange({
             //     console.log($("#sku".val()));

@@ -63,11 +63,12 @@ class ProductController extends Controller
         return view('supplier.product.create', $data);
     }
 
-    public function store(ProductRequest $request)
+
+
+    public function store(Request $request)
     {
 
-        return $request;
-
+         return $request;
 
         try {
 
