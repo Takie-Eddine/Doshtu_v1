@@ -15,6 +15,7 @@ use App\Http\Controllers\Supplier\LoginController;
 use App\Http\Controllers\Supplier\OptionsController;
 use App\Http\Controllers\Supplier\ProductController;
 use App\Http\Controllers\Supplier\ProfileController;
+use App\Http\Controllers\Supplier\ReapetController;
 use App\Http\Controllers\Supplier\RolePermissionsController;
 use App\Http\Controllers\Supplier\SupplierController;
 use App\Http\Controllers\Supplier\TagsController;
@@ -137,7 +138,13 @@ Route::group([
 
 
 
+        Route::group(['prefix' => 'reapeter' ], function () {
+            Route::get('/', [ReapetController::class, 'index'])->name('supplier.reapeter.index');
+            Route::get('create', [ReapetController::class, 'create'])->name('supplier.reapeter.create');
 
+
+
+        });
 
         ////////////////////////////////////////////////Manage/////////////////////////////////////////////////////////////////
 

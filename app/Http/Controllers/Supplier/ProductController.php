@@ -49,12 +49,7 @@ class ProductController extends Controller
 
         $data = [];
 
-        $data['categories'] = Category::parent()->select('id', 'slug')->with(['childrens' => function ($q) {
-            $q->select('id', 'parent_id', 'slug');
-            $q->with(['childrens' => function ($qq) {
-                $qq->select('id', 'parent_id', 'slug');
-            }]);
-        }])->active()->get();
+        $data['categories'] = Category::active()->get();
 
 
         $data['options'] = Option::all();
@@ -63,7 +58,7 @@ class ProductController extends Controller
         return view('supplier.product.create', $data);
     }
 
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
 
         return $request;
@@ -268,6 +263,18 @@ class ProductController extends Controller
         $product -> delete();
 
         return redirect()->back()->with(['success' => 'delete with success']);
+
+    }
+
+    public function variant(){
+
+        return view('supplier.product.variant');
+    }
+
+
+    public function storeoption(Request $request){
+
+        return $request;
 
     }
 
