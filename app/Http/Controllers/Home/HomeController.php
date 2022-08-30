@@ -35,6 +35,7 @@ class HomeController extends Controller
 
     public function storeClient(Request $request){
 
+        return $request;
 
         // try {
 

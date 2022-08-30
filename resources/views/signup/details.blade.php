@@ -255,14 +255,14 @@
 
 
                                                 <div class="d-flex justify-content-between mt-2">
-                                                    <button type="button"class="btn btn-outline-secondary btn-prev"
+                                                    <button class="btn btn-outline-secondary btn-prev"
                                                         disabled>
                                                         <i data-feather="chevron-left"
                                                             class="align-middle me-sm-25 me-0"></i>
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next">
                                                         <span class="align-middle d-sm-inline-block d-none">Next</span>
                                                         <i data-feather="chevron-right"
                                                             class="align-middle ms-sm-25 ms-0"></i>
@@ -317,13 +317,13 @@
 
 
                                                 <div class="d-flex justify-content-between mt-2">
-                                                    <button type="button"class="btn btn-primary btn-prev">
+                                                    <button class="btn btn-primary btn-prev">
                                                         <i data-feather="chevron-left"
                                                             class="align-middle me-sm-25 me-0"></i>
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next">
                                                         <span class="align-middle d-sm-inline-block d-none">Next</span>
                                                         <i data-feather="chevron-right"
                                                             class="align-middle ms-sm-25 ms-0"></i>
@@ -455,7 +455,7 @@
 
 
                                                 <div class="d-flex justify-content-between mt-1">
-                                                    <button type="button"class="btn btn-primary btn-prev">
+                                                    <button class="btn btn-primary btn-prev">
                                                         <i data-feather="chevron-left"
                                                             class="align-middle me-sm-25 me-0"></i>
                                                         <span

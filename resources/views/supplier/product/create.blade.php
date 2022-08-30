@@ -195,7 +195,7 @@
                                                                     <div class="col-md-2 col-12">
                                                                         <div class="mb-1">
                                                                             <label class="form-label" for="itemname">{{$attribute->name}}</label>
-                                                                            <select name="options" class="select2 form-select"  multiple="multiple">
+                                                                            <select name="options" class="basicSelect" id="basicSelect"  multiple="multiple">
                                                                                     @foreach ($options as $option)
                                                                                         @if ($option->attribute_id == $attribute->id)
                                                                                             <option value="{{$option->id}}">{{$option->name}}</option>
